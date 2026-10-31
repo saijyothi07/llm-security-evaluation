@@ -32,21 +32,18 @@ __________________
 Project Structure :-
 ___________________
 
+```text
 llm-security-evaluation/
-│
 ├── data/
 │   └── prompts.jsonl
-│
 ├── src/
 │   └── llm_security_eval/
 │       ├── __init__.py
 │       ├── detector.py
 │       ├── metrics.py
 │       └── runner.py
-│
 ├── tests/
 │   └── test_evaluation.py
-│
 ├── requirements.txt
 ├── .gitignore
 └── README.md

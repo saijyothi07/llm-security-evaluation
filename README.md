@@ -1,119 +1,171 @@
+# LLM Security Evaluation
 
-## LLM Security Evaluation
+**A Python-based baseline project for evaluating prompt injection detection using security test cases and classification metrics.**
 
-A Python-based project for evaluating prompt injection detection using a collection of test prompts and standard classification metrics.
+## 1. Overview
 
-Overview :-
-_________
+Large Language Models (LLMs) are increasingly used in chatbots and AI-powered applications. However, these applications can be exposed to security threats such as prompt injection, where malicious instructions attempt to manipulate the model's intended behavior.
 
-Prompt injection is a security concern in applications that interact with Large Language Models (LLMs). Malicious or misleading instructions may attempt to override the intended behavior of an application.
+This project implements a simple rule-based prompt injection detection baseline and evaluates its performance using a collection of labeled prompts.
 
-This project implements a simple rule-based prompt injection detection baseline and evaluates its performance against a small dataset of benign and potentially malicious prompts.
+The project focuses on identifying suspicious prompt patterns, measuring detection performance, and generating an evaluation report.
 
-The objective is to understand how security test cases can be organized and how detection performance can be measured.
+## 2. Objectives
 
-Objectives :-
-___________
+- Understand common prompt injection patterns.
+- Develop a basic prompt injection detection mechanism using Python.
+- Create a dataset containing benign and potentially malicious prompts.
+- Evaluate detection results against labeled test cases.
+- Calculate standard classification metrics.
+- Generate a structured evaluation report.
 
-- Identify potentially suspicious prompt injection patterns.
-- Build a baseline detection mechanism using Python.
-- Evaluate predictions against labeled test data.
-- Calculate Precision, Recall, F1-score, and Accuracy.
-- Generate an evaluation report.
+## 3. Technologies Used
 
-Technologies Used :-
-__________________
+| Technology | Purpose |
+|---|---|
+| Python | Core programming language |
+| Regular Expressions | Rule-based prompt detection |
+| JSONL | Dataset storage |
+| Pytest | Unit testing |
 
-- Python
-- JSONL for test dataset storage
-- Pytest for unit testing
-- Regular expressions for baseline detection
-
-Project Structure :-
-___________________
+## 4. Project Structure
 
 ```text
 llm-security-evaluation/
+│
 ├── data/
 │   └── prompts.jsonl
+│
 ├── src/
 │   └── llm_security_eval/
 │       ├── __init__.py
 │       ├── detector.py
 │       ├── metrics.py
 │       └── runner.py
+│
 ├── tests/
 │   └── test_evaluation.py
+│
 ├── requirements.txt
 ├── .gitignore
 └── README.md
+```
 
+## 5. How It Works
 
-How It Works :-
-_____________
+The project follows a simple evaluation pipeline:
 
-1. Dataset Loading: Reads labeled prompts from a JSONL dataset.
-2. Prompt Detection: Uses a rule-based detector to identify suspicious patterns.
-3. Prediction Evaluation: Compares predicted labels with actual labels.
-4. Metric Calculation: Calculates classification metrics.
-5. Report Generation: Produces an `evaluation_report.json` file containing evaluation results.
+**Step 1: Dataset Loading**
 
-Evaluation Metrics :-
-___________________
+Loads labeled prompts from a JSONL file. The dataset contains benign prompts and prompts representing potential injection attempts.
 
-The project calculates:
+**Step 2: Prompt Detection**
 
-| Metric | Purpose |
+The rule-based detector analyzes each prompt using predefined suspicious patterns.
+
+**Step 3: Prediction**
+
+Each prompt is classified as either benign or potentially malicious based on the detection rules.
+
+**Step 4: Evaluation**
+
+Predicted labels are compared with the actual labels in the dataset.
+
+**Step 5: Metric Calculation**
+
+The evaluation module calculates Accuracy, Precision, Recall, and F1-score.
+
+**Step 6: Report Generation**
+
+The runner generates an `evaluation_report.json` file containing the evaluation results.
+
+## 6. Evaluation Metrics
+
+The project uses the following classification metrics:
+
+| Metric | Description |
 |---|---|
-| Accuracy | Overall proportion of correct predictions |
-| Precision | Proportion of detected prompts that are actually positive |
-| Recall | Proportion of positive prompts correctly detected |
-| F1-score | Harmonic mean of precision and recall |
+| Accuracy | Measures the overall proportion of correct predictions. |
+| Precision | Measures how many detected malicious prompts are actually malicious. |
+| Recall | Measures how many actual malicious prompts are successfully detected. |
+| F1-score | Combines Precision and Recall using their harmonic mean. |
 
-Installation and Execution
-_____________________________
+## 7. Installation and Execution
 
-1. Clone the repository
+### Prerequisites
 
+- Python 3.9 or above
+- pip package manager
+
+### Step 1: Clone the Repository
+
+```bash
 git clone https://github.com/saijyothi07/llm-security-evaluation.git
+```
+
+### Step 2: Navigate to the Project Directory
+
+```bash
 cd llm-security-evaluation
+```
 
+### Step 3: Install Dependencies
 
-2. Install dependencies
-
+```bash
 pip install -r requirements.txt
+```
 
+### Step 4: Run the Evaluation
 
-3. Run the evaluation
-
+```bash
 python -m src.llm_security_eval.runner
+```
 
+The evaluation results will be saved in:
 
-The evaluation report will be generated as `evaluation_report.json`.
+```text
+evaluation_report.json
+```
 
-4. Run tests
+### Step 5: Run Unit Tests
 
+```bash
 pytest
+```
 
-Current Scope and Limitations :-
-_____________________________
+## 8. Current Scope and Limitations
 
-- Uses a rule-based detection approach rather than an LLM-powered classifier.
-- The included dataset is small and illustrative.
-- Detection performance should not be interpreted as production-level security effectiveness.
+- Uses a rule-based detection mechanism rather than an actual LLM-based classifier.
+- The dataset is small and intended for demonstration and experimentation.
+- Detection depends on predefined patterns.
 - The baseline may produce false positives and false negatives.
+- Results should not be interpreted as production-level security performance.
 
-Future Improvements :-
-_____________________
+## 9. Future Improvements
 
-- Integrate an LLM-based detection pipeline.
-- Expand the dataset with diverse prompt injection examples.
-- Add separate training, validation, and test datasets.
-- Compare rule-based detection with LLM-based approaches.
+- Integrate an LLM-based prompt injection detection pipeline.
+- Expand the dataset with more diverse security test cases.
+- Introduce separate training, validation, and testing datasets.
+- Compare rule-based detection with LLM-based detection.
 - Explore evaluation frameworks such as Ragas and DeepEval.
+- Add more comprehensive security evaluation scenarios.
 
-Author :-
+## 10. Learning Outcomes
 
-*Sai Jyothi Pulakunta*
+Through this project, the following concepts can be explored:
+
+- Prompt injection and LLM security fundamentals.
+- Dataset preparation and evaluation.
+- Rule-based classification.
+- Precision, Recall, F1-score, and Accuracy.
+- Python project organization and unit testing.
+
+## Author
+
+**Sai Jyothi Pulakunta**
 
 GitHub: [saijyothi07](https://github.com/saijyothi07)
+
+---
+
+*This is an independent educational project intended for learning and experimentation. It is not a production-ready LLM security solution.*
